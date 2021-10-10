@@ -30,16 +30,16 @@ def to_records(dt):
     value_len = len(new_value[0])
     value_len_list = list(map(len, new_value))
 
-    try:
-        if min(value_len_list) == value_len:
-            l = []
-            B = [flat_value[i:total_len:value_len] for i in range(value_len)]
-            for i in B:
-                dic = dict(zip(new_key, i))
-                l.append(dic)
-            return l
-    except:
-        print("ERROR")
+    if min(value_len_list) == value_len:
+        l = []
+        B = [flat_value[i:total_len:value_len] for i in range(value_len)]
+        for i in B:
+            dic = dict(zip(new_key, i))
+            l.append(dic)
+        return l
+    else:
+        print('Error')
+        print([])
 
 print(to_records(data))
 print(to_records(data1))
