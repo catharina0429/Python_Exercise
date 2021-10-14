@@ -22,7 +22,7 @@ def insertion_sort(array):
         array[i + 1] = key
     return array
 A = [31, 41, 59, 26, 41, 58]
-print(A)
+# print(A)
 print(insertion_sort(A))
 
 def InsertionSort(array):
@@ -32,10 +32,11 @@ def InsertionSort(array):
                 array[i - 1] , array[i] = array[i], array[i - 1]
             else:
                 break
+            print(array)
     return array
 
 print(InsertionSort(A))
 
 b = [2, 4, 5, 1, 3]
-print(b)
+# print(b)
 print(InsertionSort(b))
