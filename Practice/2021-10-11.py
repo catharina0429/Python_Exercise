@@ -1,6 +1,17 @@
 # Introduction to Algorithms 3rd edition
+"""
+INSERTION-SORT(A)
+1   for j = 2 to A.length
+2       key = A[j]
+3       # Insert A[j] into the sorted sequence A[1 ....j-1]
+4       i = j - 1
+5       while i > 0 and A[i] > key
+6           A[i + 1] = A[i]
+7           i = i - 1
+8       A[i + 1] = key
+"""
 # Exercise 2.1-1 Insertion-sort
-A = [31, 41, 59, 26, 41, 58]
+
 def insertion_sort(array):
     for j in range(1, len(array)):
         i = j - 1
@@ -10,7 +21,8 @@ def insertion_sort(array):
             i = i - 1
         array[i + 1] = key
     return array
-
+A = [31, 41, 59, 26, 41, 58]
+print(A)
 print(insertion_sort(A))
 
 def InsertionSort(array):
@@ -23,3 +35,7 @@ def InsertionSort(array):
     return array
 
 print(InsertionSort(A))
+
+b = [2, 4, 5, 1, 3]
+print(b)
+print(InsertionSort(b))
