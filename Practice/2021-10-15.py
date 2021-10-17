@@ -27,13 +27,18 @@ print(a[3:])
 print(a[:3])
 def MergeSort(array):
     length = len(array)
+    # 종료 조건 : 정렬할 요소가 1개인 경우
     if length <= 1:
         return array
-    mid_len = length // 2
+    # 그룹을 나누어 재귀적으로 정렬함
+    mid_len = length // 2 # p와 r을 더해서 2로 나눈 후 정수로 만듧
+    # 각각의 하위 배열을 재귀적으로 정렬함
     g1 = MergeSort(array[:mid_len])
     g2 = MergeSort(array[mid_len:])
 
+    # 정렬된 두 하위 배열을 하나의 정렬된 하위배열로 결합
     result = []
+
     while g1 and g2:
         if g1[0] < g2[0]:
             result.append(g1.pop(0))
@@ -46,3 +51,8 @@ def MergeSort(array):
     return result
 
 print(MergeSort(a))
+
+b = [14, 7, 3, 12, 9, 11, 6, 2]
+print(MergeSort(b))
+
+# The time complexiti of merge sort is O(n * lg n)
