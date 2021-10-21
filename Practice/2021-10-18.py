@@ -45,7 +45,6 @@ import random
 
 ls = [x for x in range(10001)] # 10000개의 element를 갖는 리스트
 random.shuffle(ls) # 무작위로 섞기
-# print(ls)
 
 start = time.time()
 QuickSort(ls)
