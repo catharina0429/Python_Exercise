@@ -20,7 +20,6 @@ OOP(Object-Oriented Programming)은 여러 개의 독립된 단위, 즉 "객체"
 * 같은 코드를 반복하지 않는다. Don't repeat yourself
 * 코드는 항상 바뀔 수 있다는 것을 기억한다.
 
-
 """
 class Employee:
     pass
@@ -59,6 +58,8 @@ print(emp2.email)
 # 호출되는 순간 자동으로 인스턴스 오브젝트를 self라는 인자로 받음.
 
 class Employee:
+    raise_amount = 1.1 # 클래스 변수 정의
+
     def __init__(self, first, last, pay):
         self.first = first
         self.last = last
@@ -70,9 +71,59 @@ class Employee:
         # class안에 method(function)를 생성해서 호출함
         return '{}{}'.format(self.first, self.last)
 
+    def apply_raise(self):
+        # 연봉을 10% 인상함
+        # self.pay = int(self.pay * Employee.raise_amount) # 1 클래스 Emplyee를 사용해서 엑세스
+        self.pay = int(self.pay * self.raise_amount) # 1 인스턴스인 self를 사용하요 엑세스
+
 emp1 = Employee('Jane', 'Doe', 50000)
 emp2 = Employee('John', 'Doe', 45000)
 
 print(emp1.full_name())
-print(Employee.full_name(emp1))
+print(Employee.full_name(emp1)) # 클래스의 함수(method)로 인스턴스를 불러옴
 
+print('# 기존 연봉', emp1.pay)
+print('# 인상률 적용')
+emp1.apply_raise()
+print('# 오른 연봉', emp1.pay)
+"""
+인스턴스 변수: 각각의 인스턴스마다 가지고 있는 고유한 데이터
+클래스 변수: 같은 클래스로 만들어진 모든 인스턴스가 공유하는 데이터
+"""
+
+print('# 인스턴스 네임스페이스 참조')
+print(emp1.__dict__)
+
+print('\n# 클래스의 네임스페이스 참조')
+print(Employee.__dict__)
+
+class Employee:
+
+    raise_amount = 1.1
+    num_of_emps = 0 # 1 클래스 변수 정의
+
+    def __init__(self, first, last, pay):
+        self.first = first
+        self.last = last
+        self.pay = pay
+        self.email = first.lower() + '.' + last.lower() + 'aaabbb.com'
+
+        # Employee.num_of_emps = Employee.num_of_emps + 1
+        Employee.num_of_emps += 1 # 2 인스턴스가 생성될 때마다 1씩 증가
+
+    def __del__(self):
+        Employee.num_of_emps -= 1 # 3 인스턴스가 제거될 때마다 1씩 감소
+
+    def full_name(self):
+        return '{}{}'.format(self.first, self.last)
+
+    def apply_raise(self):
+        self.pay = int(self.pay * self.raise_amount) # 1 인스턴스 변수부터 참조함
+
+print(Employee.num_of_emps) # 처음 직원 수
+emp1 = Employee('Jane', 'Doe', 50000) # 직원 1 입사
+emp2 = Employee('John', 'Doe', 60000) # 직원 2 입사
+print(Employee.num_of_emps) # 직원 수 확인
+del emp1
+del emp2
+print(Employee.num_of_emps) # 직원 수 확인
