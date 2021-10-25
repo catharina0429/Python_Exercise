@@ -65,8 +65,14 @@ class Employee:
         self.pay = pay
         self.email = first.lower()  + "." + last.lower() + '@aaabbb.com'
 
+    def full_name(self):
+        # 매번 print('{}{}'.format(self.first, self.last))로 출력하는 대신
+        # class안에 method(function)를 생성해서 호출함
+        return '{}{}'.format(self.first, self.last)
+
 emp1 = Employee('Jane', 'Doe', 50000)
 emp2 = Employee('John', 'Doe', 45000)
 
-print(emp1.email)
+print(emp1.full_name())
+print(Employee.full_name(emp1))
 
