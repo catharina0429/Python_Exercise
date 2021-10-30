@@ -80,6 +80,14 @@ jane.study()         #output: Study hard, enjoy much; Derived class(bacheolor)�
 
 print(bacheolor.mro()) # 호출순서는 자기자신, 그 다음이 Person, University
 
-"""
-abstract class(추상 클래스)
-"""
+# list에 replace method를 추가한 AdvancedList 클래스를 만들어라
+# AdvancedList는 list를 상속받아서 만들고,
+# replace 메서드는 리스트에서 특정값으로 된 요소를 찾아서 다른 값으로 바꿔라
+
+class AdvancedList(list):
+    def replace(self, old, new):
+        while old in self:
+            self[self.index(old)] = new
+x = AdvancedList([1,2,3,1,2,3,1,2,3])
+x.replace(1, 100)
+print(x)
