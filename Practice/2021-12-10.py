@@ -121,7 +121,3 @@ if __name__ == '__main__':
     assert list(split_pairs('a')) == ['a_']
     assert list(split_pairs('')) == []
     print("Coding complete? Click 'Check' to earn cool rewards!")
-
-def beginning_zeros(number: str) -> int:
-    # your code here
-    return 0
