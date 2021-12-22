@@ -26,12 +26,22 @@ if __name__ == '__main__':
 
 def frequency_sort(items):
     """Sort array by element frequency"""
-    tmp = sorted(items, reverse = True)
-    return sorted(tmp, key = tmp.count, reverse = True)
+    # try:
+    #     if len(items) == 0:
+    #         return []
+    #     for i in items:
+    #         if items.count(i) > 1:
+    #             tmp = sorted(items, reverse = True)
+    #             return sorted(tmp, key = tmp.count, reverse = True)
+    #         else:
+    #             return items
+    # except:
+    #     return []
+    return sorted(items, key = lambda x: (-items.count(x), items.index(x)))
 
 if __name__ == '__main__':
     print("Example:")
-    print(frequency_sort([4, 6, 2, 2, 6, 4, 4, 4]))
+    print(frequency_sort([1,2,2,1]))
 
     # These "asserts" are used for self-checking and not for an auto-testing
     assert list(frequency_sort([4, 6, 2, 2, 6, 4, 4, 4])) == [4, 4, 4, 4, 6, 6, 2, 2]
