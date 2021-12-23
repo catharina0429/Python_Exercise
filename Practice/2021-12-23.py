@@ -1,20 +1,23 @@
 def date_time(time: str) -> str:
     """Date and Time Converter"""
-    # d, t = time.split(" ")
-    # Month = {'01': 'January', '02': 'February', '03': 'March', '04': 'April',
-    #          '05': 'May', '06': 'Jun', '07': 'July', '08': 'August',
-    #          '09': 'Sepember', '10': 'October', '11': 'November', '12': 'Decdember'}
-    # d = list(map(str, d.split(".")))
-    # d[0] = str(int(d[0]))
-    # d[1] = Month[d[1]]
-    # t = list(map(int, t.split(":")))
-    # t = list(map(str, t))
-    # return " ".join(d) + ' year ' + t[0] + ' hours ' + t[1] + ' minutes '
-    from datetime import datetime
-    t = datetime.strptime(time, "%d.%m.%Y %H:%M")
-    y, m, d, h, min = t.year, datetime.strftime(t, "%B"), t.day, t.hour, t.minute
+    Month = {'01': 'January', '02': 'February', '03': 'March', '04': 'April',
+             '05': 'May', '06': 'Jun', '07': 'July', '08': 'August',
+             '09': 'Sepember', '10': 'October', '11': 'November', '12': 'Decdember'}
 
-    return f'{d} {m} {y} year {h} hours {min} minutes'
+    hour = 'hour' if int(time[11:13]) == 1 else 'hours'
+    minute = 'minute' if int(time[14:]) == 1 else 'minutes'
+    return (str(int(time[:2])) + ' ' + Month[time[3:5]] + ' ' +
+            time[6:10] + ' ' + 'year' + ' ' + str(int(time[11:13])) +
+            ' ' + hour + ' ' + str(int(time[14:])) + ' ' + minute)
+
+## Best Solution
+    #     from datetime import datetime
+    ## strptime : 문자열로부터 날짜와 시간 정보를 읽어서 datetime클래스 객체를 만듦
+    ## strftime: 날짜와 시간정보를 문자열로 바꿔주는 함수
+    #     dt = datetime.strptime(time, '%d.%m.%Y %H:%M')
+    #     hour = 'hour' if dt.hour == 1 else 'hours'
+    #     minute = 'minute' if dt.minute == 1 else 'minutes'
+    #     return dt.strftime(f'%-d %B %Y year %-H {hour} %-M {minute}')
 
 if __name__ == "__main__":
     print("Example:")
