@@ -73,3 +73,29 @@ if __name__ == '__main__':
     assert safe_pawns({"b4", "d4", "f4", "c3", "e3", "g5", "d2"}) == 6
     assert safe_pawns({"b4", "c4", "d4", "e4", "f4", "g4", "e5"}) == 1
     print("Coding complete? Click 'Check' to review your tests and earn cool rewards!")
+
+def checkio(values: list) -> list:
+    """Absolute Sorting"""
+    return sorted(values, key = abs)
+
+if __name__ == '__main__':
+    print("Example:")
+    print(checkio([-20, -5, 10, 15]))
+
+    # These "asserts" are used for self-checking and not for an auto-testing
+    assert checkio([-20, -5, 10, 15]) == [-5, 10, 15, -20]
+    assert checkio([1, 2, 3, 0]) == [0, 1, 2, 3]
+    assert checkio([-1, -2, -3, 0]) == [0, -1, -2, -3]
+    print("Coding complete? Click 'Check' to earn cool rewards!")
+
+
+def checkio(in_string):
+    """Remove accents"""
+    import unicodedata
+    nfkd_form = unicodedata.normalize('NFKD', in_string)
+    return u"".join([c for c in nfkd_form if not unicodedata.combining(c)])
+
+if __name__ == '__main__':
+    assert checkio(u"préfèrent") == u"preferent"
+    assert checkio(u"loài trăn lớn") == u"loai tran lon"
+    print('Done')
