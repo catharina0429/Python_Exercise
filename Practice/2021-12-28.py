@@ -37,7 +37,7 @@ def time_converter(time):
     ## other solution
     # h, m = map(int, time.split(':'))
     # return f"{(h - 1) % 12 + 1}:{m:02d} {'ap'[h > 11]}.m."
-    
+
 if __name__ == '__main__':
     print("Example:")
     print(time_converter('12:30'))
@@ -47,4 +47,23 @@ if __name__ == '__main__':
     assert time_converter('09:00') == '9:00 a.m.'
     assert time_converter('23:15') == '11:15 p.m.'
     assert time_converter("00:00") == "12:00 a.m."
+    print("Coding complete? Click 'Check' to earn cool rewards!")
+
+from typing import Tuple
+def sum_by_types(items: list) -> Tuple[str, int]:
+    """Sum by Type"""
+    return ("".join([i for i in items if i == str(i)]),
+            sum(j for j in items if j != str(j)))
+
+if __name__ == "__main__":
+    print("Example:")
+    print(sum_by_types([]))
+
+    # These "asserts" are used for self-checking and not for an auto-testing
+    assert sum_by_types([]) == ("", 0)
+    assert sum_by_types([1, 2, 3]) == ("", 6)
+    assert sum_by_types(["1", 2, 3]) == ("1", 5)
+    assert sum_by_types(["1", "2", 3]) == ("12", 3)
+    assert sum_by_types(["1", "2", "3"]) == ("123", 0)
+    assert sum_by_types(["size", 12, "in", 45, 0]) == ("sizein", 57)
     print("Coding complete? Click 'Check' to earn cool rewards!")
