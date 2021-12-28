@@ -22,3 +22,29 @@ if __name__ == '__main__':
     assert goes_after('world', 'd', 'w') == False
     assert goes_after("almaz","r","a") == False
     print("Coding complete? Click 'Check' to earn cool rewards!")
+
+def time_converter(time):
+    """to convert the time from the 24-h format into 12-h format"""
+    h, m = time.split(":")
+    if int(h) == 0:
+        return str(int(h) + 12) + ":" + m + " a.m."
+    elif int(h) < 12:
+        return str(int(h)) + ":" + m + " a.m."
+    elif int(h) > 12:
+        return str(int(h) - 12) + ":" + m + " p.m."
+    else:
+        return str(int(h)) + ":" + m + " p.m."
+    ## other solution
+    # h, m = map(int, time.split(':'))
+    # return f"{(h - 1) % 12 + 1}:{m:02d} {'ap'[h > 11]}.m."
+    
+if __name__ == '__main__':
+    print("Example:")
+    print(time_converter('12:30'))
+
+    #These "asserts" using only for self-checking and not necessary for auto-testing
+    assert time_converter('12:30') == '12:30 p.m.'
+    assert time_converter('09:00') == '9:00 a.m.'
+    assert time_converter('23:15') == '11:15 p.m.'
+    assert time_converter("00:00") == "12:00 a.m."
+    print("Coding complete? Click 'Check' to earn cool rewards!")
