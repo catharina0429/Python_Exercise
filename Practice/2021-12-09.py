@@ -19,6 +19,7 @@ for file_name_raw in file_list:
     basicinfo.append(file_name_raw)
     basicinfo.append(ws['B3'].value)
     basicinfo.append(ws['B4'].value)
+    basicinfo.append(ws['B6'].value)
     basicinfo.append(ws['D1'].value)
 
     results.append(basicinfo)
@@ -28,4 +29,5 @@ print(results)
 for i in results:
     ws.append(i)
 
-wb.save("C:/..../tmp.xlsx")
+# wb.save("C:/..../tmp.xlsx")
+wb.save("C:/..../Basic_info.xlsx")
