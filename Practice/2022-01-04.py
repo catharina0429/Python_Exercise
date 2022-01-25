@@ -27,10 +27,7 @@ if __name__ == '__main__':
     print('Done! Go Check!')
 
 def words_order(text: str, words: list) -> bool:
-    # your code here
-    # list(set(text.split(" ")).intersection(words))
-    # return [x for x in text.split(" ") if x in words] == words
-    # return [x for x in list(set(text.split(" "))) if x in words] == words
+    return [x for x in list(dict.fromkeys(text.split(" "))) if x in words] == words
 
 if __name__ == "__main__":
     print("Example:")
@@ -47,5 +44,5 @@ if __name__ == "__main__":
     assert words_order("hi world im here", ["country", "world"]) == False
     assert words_order("hi world im here", ["wo", "rld"]) == False
     assert words_order("", ["world", "here"]) == False
-    assert words_order("hi world world im here",["world","world"]) == False
+    assert words_order("hi world world im here", ["world","world"]) == False
     print("Coding complete? Click 'Check' to earn cool rewards!")
